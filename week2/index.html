@@ -29,7 +29,22 @@
 		</div>
 
 		<!-- Let's put in a timer here -->
+		
 		<script type="text/javascript">
+			var count = 30;
+	var counter = setInterval(timer, 1000); 
+	
+	function timer() {
+	    count = count - 1;
+	    if (count <= 0) {
+	        clearInterval(counter);
+	        alert("Boom!");
+	        document.getElementById('button').style.visibility = 'hidden';
+	        return;
+    }
+
+    document.getElementById("timer").innerHTML = count + " secs";
+}
 
 		</script>
 		
