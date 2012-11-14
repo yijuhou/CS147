@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html> 
 <html>
 
@@ -30,20 +33,22 @@
 	<div data-role="content">	
 		
 		<?php
-		// This is a hack. You should connect to a database here.
-		if ($_POST["username"] == "oi") {
-			?>
-			<script type="text/javascript">
-				// Save the username in local storage. That way you
-				// can access it later even if the user closes the app.
-				localStorage.setItem('username', '<?=$_POST["username"]?>');
+		$salt = "kr";
+		// This saved_password would be saved in the database. I haven't included
+		// a link to my database, but the lab 5 video recap has a walkthrough.
+		$saved_password = crypt('mypassword', $salt); 
+		$username = $_POST["username"];
+		$entered_password = $_POST["password"];
+
+		// We check the user-entered password against the one
+		// saved and retrieved above. If it matches, the user is logged in.
+		if (crypt($entered_password, $salt) == $saved_password && strcmp($username, "test") == 0) {
+		   echo "You are now logged in!";
+		   ?>
+		   <script type="text/javascript">
+			localStorage.setItem('username', '<?=$_POST["username"]?>');
 			</script>
-			<?php
-			echo "<p>Thank you, <strong>".$_POST["username"]."</strong>. You are now logged in.</p>";
-		} else {
-			echo "<p>There seems to have been an error.</p>";
-		}
-			
+		<?php }
 
 		?>
 	</div><!-- /content -->
@@ -53,22 +58,17 @@
 		<ul>
 			<li><a href="index.php" id="home" data-icon="custom">Home</a></li>
 			<li><a href="login.php" id="key" data-icon="custom" class="ui-btn-active">Login</a></li>
-			<li><a href="filter.php" id="beer" data-icon="custom">Filter</a></li>
-<<<<<<< HEAD
-			<li><a href="#" id="gear" data-icon="custom">Settings</a></li>
-=======
-			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
->>>>>>> 2f422484d7577b6a4a4f9cbd0e0d550176ccef8e
+			<li><a href="filter.php" id="map" data-icon="custom">Filter</a></li>
+			<li><a href="settings.php" id="gear" data-icon="custom">Settings</a></li>
 		</ul>
 		</div>
 	</div>
-	
 	<script type="text/javascript">
 		$("#logout").click(function() {
-			localStorage.removeItem('username');
-			$("#form").show();
-			$("#logout").hide();
-		});
+		localStorage.removeItem('username');
+		$("#form").show();
+		$("#logout").hide();
+	});
 	</script>
 </div><!-- /page -->
 

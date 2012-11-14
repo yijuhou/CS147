@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+?>
+
 <!DOCTYPE html> 
 <html>
 
@@ -29,23 +34,18 @@
 
 	<div data-role="content">
 	
-<<<<<<< HEAD
-	<form action="login.php" method="post">
-	<label for="foo">Username:</label>
-	<input type="text" name="username" id="foo">
-	<label for="bar">Password:</label>
-	<input type="password" name="password" id="bar">
-	<input type="submit" value="Login">
-</form>
-
-<script src="https://gist.github.com/3937498.js?file=index.php"></script>
-=======
-	<p>The form should go here</p>
->>>>>>> 2f422484d7577b6a4a4f9cbd0e0d550176ccef8e
+	<form id="form" action="enter.php" method="post">
 		<div data-role="fieldcontain">
-			
-		</div>	
-	
+	     <label for="foo">Username:</label>
+	     <input type="text" name="username" id="foo" value="" autocapitalize="off" />
+		</div>
+		<div data-role="fieldcontain">
+	     <label for="foo">Password:</label>
+	     <input type="password" name="password" id="foo" value=""  />
+		</div>
+		
+		<button type="submit" data-theme="b" name="submit" value="submit-value">Submit</button>
+	</form>
 		
 	<div id="info">
 		<p>Thank you for logging. You should be able to see all sorts of user information here.</p>
@@ -57,8 +57,8 @@
 		<ul>
 			<li><a href="index.php" id="home" data-icon="custom">Home</a></li>
 			<li><a href="login.php" id="key" data-icon="custom" class="ui-btn-active">Login</a></li>
-			<li><a href="filter.php" id="beer" data-icon="custom">Filter</a></li>
-			<li><a href="#" id="skull" data-icon="custom">Settings</a></li>
+			<li><a href="filter.php" id="map" data-icon="custom">Filter</a></li>
+			<li><a href="settings.php" id="gear" data-icon="custom">Settings</a></li>
 		</ul>
 		</div>
 	</div>
